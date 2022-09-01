@@ -4,3 +4,22 @@
 .card-tarefa{
     border: 1px solid #ccc;
 }
+
+.set-margin{
+    margin: 0 auto;
+}
+
+#elTasks{
+    margin: 0 auto;
+}
+
+.flex-display{
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+footer .flex-display{
+    font-size: 18px;
+}

@@ -1,20 +1,6 @@
 {
   "tasks": [
     {
-      "title": "Estudar Pandas",
-      "description": "ser cientista de dados e engenheiro de dados!!!!",
-      "email": "lucas@email.com",
-      "date": "2022-08-20",
-      "id": 4
-    },
-    {
-      "title": "Estudar Pandas",
-      "description": "ser engenheiro de dados",
-      "email": "lucas@email.com",
-      "date": "2022-08-07",
-      "id": 6
-    },
-    {
       "title": "Estudar python",
       "description": "estudar",
       "email": "lucas.silva@email.com",
@@ -27,6 +13,13 @@
       "email": "lucas.silva@email.com",
       "date": "2022-08-11",
       "id": 8
+    },
+    {
+      "title": "Estudar Pandas",
+      "description": "aprimorar habilidades",
+      "email": "lucas.silva@email.com",
+      "date": "2022-09-01",
+      "id": 9
     }
   ]
 }
