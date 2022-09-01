@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <title>Todolist</title>
+
+    <!-- Materialize CSS CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+
+    <!-- font awsome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <nav class="orange darken-2">
+            <div class="nav-wrapper"></div>
+        </nav>
+
+        <div class="container">
+            <div class="section">
+                <!--   Icon Section   -->
+                <div class="row">
+                    <div class="col s12" id="elTasks">
+                        <!-- New tasks area-->
+                        <div class="col s12 m7" v-for="tarefa in tasks">
+                            <h2 class="header">{{ tarefa.title }}</h2>
+                            <div class="card horizontal">
+                                <div class="card-stacked">
+                                    <div class="card-content">
+                                        <p>{{ tarefa.description}}.</p>
+                                    </div>
+                                    <div class="card-action">
+                                        <a href="#">{{ tarefa.date }}</a>
+                                        <v-btn :loading="loading" class="ma-1" color="error" plain
+                                            @click="remove(tarefa.id)">
+                                            Delete
+                                        </v-btn>
+                                        <v-btn @click="editTask(tarefa.id)">
+                                            <v-icon>mdi-pencil</v-icon>
+                                            Edit
+                                        </v-btn>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="add">
+            <a class="btn-floating btn-large waves-effect waves-light red"><i class="fa-solid fa-plus"></i></a>
+        </div> -->
+
+            <template>
+                <div data-app>
+
+                    <v-row justify="center">
+                        <v-dialog v-model="dialog" persistent max-width="600px">
+                            <template v-slot:activator="{ on, attrs }">
+                                <v-btn color="primary" dark v-bind="attrs" v-on="on">
+                                    Create New Taks
+                                </v-btn>
+                            </template>
+                            <v-card>
+                                <v-card-title>
+                                    <span class="text-h5">New Task</span>
+                                </v-card-title>
+                                <v-card-text>
+                                    <v-container>
+                                        <v-row>
+                                            <v-col cols="12">
+                                                <v-text-field v-model="title" label="Título" required></v-text-field>
+                                            </v-col>
+                                            <v-col cols="12">
+                                                <v-text-field v-model="description" label="Descrição"></v-text-field>
+                                            </v-col>
+                                            <v-col cols="12">
+                                                <v-text-field v-model="email" label="Email*" required></v-text-field>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <p>Data para finalizar a task: </p>
+                                                <v-date-picker v-model="date" no-title required></v-date-picker>
+                                            </v-col>
+                                        </v-row>
+                                    </v-container>
+                                    <v-card-actions>
+                                        <v-spacer></v-spacer>
+                                        <v-btn color="blue darken-1" text @click="dialog = false">
+                                            Close
+                                        </v-btn>
+                                        <v-btn color="blue darken-1" text @click="addNewTask">
+                                            Save
+                                        </v-btn>
+                                    </v-card-actions>
+                            </v-card>
+                        </v-dialog>
+                    </v-row>
+                </div>
+
+            </template>
+
+            <template>
+                <div data-app>
+
+                    <v-row justify="center">
+                        <v-dialog v-model="dialogEdit" persistent max-width="600px">
+                            <v-card>
+                                <v-card-title>
+                                    <span class="text-h5">New Task</span>
+                                </v-card-title>
+                                <v-card-text>
+                                    <v-container>
+                                        <v-row>
+                                            <v-col cols="12">
+                                                <v-text-field v-model="title" label="Título" required></v-text-field>
+                                            </v-col>
+                                            <v-col cols="12">
+                                                <v-text-field v-model="description" label="Descrição"></v-text-field>
+                                            </v-col>
+                                            <v-col cols="12">
+                                                <v-text-field v-model="email" label="Email*" required></v-text-field>
+                                            </v-col>
+                                            <v-col cols="12" sm="6">
+                                                <p>Data para finalizar a task: </p>
+                                                <v-date-picker v-model="date" no-title required></v-date-picker>
+                                            </v-col>
+                                        </v-row>
+                                    </v-container>
+                                    <v-card-actions>
+                                        <v-spacer></v-spacer>
+                                        <v-btn color="blue darken-1" text @click="dialogEdit = false">
+                                            Close
+                                        </v-btn>
+                                        <v-btn color="blue darken-1" text @click="sendEdit">
+                                            Edit
+                                        </v-btn>
+                                    </v-card-actions>
+                            </v-card>
+                        </v-dialog>
+                    </v-row>
+                </div>
+
+            </template>
+        </div>
+        <footer class="page-footer orange darken-3">
+            <div class="footer-copyright">
+                <div class="container">© 2022 Frontend</div>
+            </div>
+        </footer>
+    </div>
+    <!-- Materialize JavaScript CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>

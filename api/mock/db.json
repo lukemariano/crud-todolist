@@ -1,0 +1,32 @@
+{
+  "tasks": [
+    {
+      "title": "Estudar Pandas",
+      "description": "ser cientista de dados e engenheiro de dados!!!!",
+      "email": "lucas@email.com",
+      "date": "2022-08-20",
+      "id": 4
+    },
+    {
+      "title": "Estudar Pandas",
+      "description": "ser engenheiro de dados",
+      "email": "lucas@email.com",
+      "date": "2022-08-07",
+      "id": 6
+    },
+    {
+      "title": "Estudar python",
+      "description": "estudar",
+      "email": "lucas.silva@email.com",
+      "date": "2022-08-10",
+      "id": 7
+    },
+    {
+      "title": "Comer Borda braba",
+      "description": "estudar",
+      "email": "lucas.silva@email.com",
+      "date": "2022-08-11",
+      "id": 8
+    }
+  ]
+}

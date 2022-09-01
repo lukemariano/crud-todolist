@@ -1,0 +1,16 @@
+{
+  "name": "crud-todolist",
+  "version": "1.0.0",
+  "description": "todo list vuejs",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "database": "json-server --watch api/mock/db.json",
+    "api:mock": "node api/mock/server"
+  },
+  "author": "Lucas Mariano da Silva",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^0.17.0"
+  }
+}
