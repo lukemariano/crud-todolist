@@ -23,3 +23,7 @@
 footer .flex-display{
     font-size: 18px;
 }
+
+.height-picker{
+    height: 480px;
+}
