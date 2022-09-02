@@ -73,8 +73,6 @@ app = new Vue ({
 
         this.dialogEdit = true
 
-
-
     },
 
     async sendEdit(){
@@ -92,6 +90,16 @@ app = new Vue ({
             headers: { "Content-Type": "application/json" },
             body: dataJson,
         })
+
+    
+
+        this.dialogEdit = false
+    },
+    async closeEdit(){
+        this.title = '';
+        this.description = '';
+        this.email = '';
+        this.date = '';
 
         this.dialogEdit = false
     },
