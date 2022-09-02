@@ -30,14 +30,21 @@ app = new Vue ({
 
         await new Promise(resolve => setTimeout(resolve, 800))
 
-        await fetch(`http://localhost:3000/tasks/${id}`, {
-            method: "DELETE"
-        })
+        const req = await fetch(`http://localhost:3000/tasks/${id}`, {
+            method: "DELETE",
+        });
+
+        const response = await req.json()
+
+        // const res = await axios.delete(`http://localhost:3000/tasks/${id}`)
 
         this.loading = false
+
+        this.getTasks()
         
       },
-    async addNewTask(){
+    async addNewTask(e){
+        e.preventDefault();
         const data = {
             title: this.title,
             description: this.description,
@@ -53,7 +60,11 @@ app = new Vue ({
             body: dataJson,
         })
 
+        const response = await req.json()
+
         this.dialog = false
+
+        this.getTasks()
 
     },
 
@@ -73,6 +84,7 @@ app = new Vue ({
 
         this.dialogEdit = true
 
+
     },
 
     async sendEdit(){
@@ -91,9 +103,15 @@ app = new Vue ({
             body: dataJson,
         })
 
-    
+        this.title = '';
+        this.description = '';
+        this.email = '';
+        this.date = '';
 
         this.dialogEdit = false
+
+
+        this.getTasks()
     },
     async closeEdit(){
         this.title = '';
@@ -104,7 +122,7 @@ app = new Vue ({
         this.dialogEdit = false
     },
    },
-   created(){
+   mounted(){
     this.getTasks();
    }
 })

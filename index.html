@@ -20,6 +20,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -44,7 +45,7 @@
                                     <div class="card-action">
                                         {{ tarefa.date }}
                                         <v-btn :loading="loading" class="ma-1" color="error" plain
-                                            @click="remove(tarefa.id)">
+                                            @click.prevent="remove(tarefa.id)">
                                             Delete
                                         </v-btn>
                                         <v-btn @click="editTask(tarefa.id)">
@@ -101,7 +102,7 @@
                                         <v-btn color="blue darken-1" text @click="dialog = false">
                                             Close
                                         </v-btn>
-                                        <v-btn color="blue darken-1" text @click="addNewTask">
+                                        <v-btn color="blue darken-1" text @click.prevent="addNewTask">
                                             Save
                                         </v-btn>
                                     </v-card-actions>

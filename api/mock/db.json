@@ -1,13 +1,6 @@
 {
   "tasks": [
     {
-      "title": "Estudar Pandas",
-      "description": "aprimorar habilidades",
-      "email": "lucas.silva@email.com",
-      "date": "2022-09-01",
-      "id": 9
-    },
-    {
       "title": "Estudar Numpy",
       "description": "aprender datascience",
       "email": "luquinhas@email.com",
@@ -15,25 +8,18 @@
       "id": 10
     },
     {
-      "title": "Estudar muito",
-      "description": "aaaaa",
-      "email": "a@email.com",
-      "date": "2022-09-03",
+      "title": "assasa",
+      "description": "asasa",
+      "email": "asasas",
+      "date": "",
       "id": 11
     },
     {
-      "title": "Assistir The king's avatar",
-      "description": "anime",
-      "email": "luke@email.com",
-      "date": "2022-09-02",
+      "title": "dfghfghhg",
+      "description": "ghhghg",
+      "email": "dhgh",
+      "date": "2022-09-14",
       "id": 12
-    },
-    {
-      "title": "Existir",
-      "description": "uuuh",
-      "email": "",
-      "date": "2022-09-03",
-      "id": 13
     }
   ]
 }
